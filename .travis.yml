@@ -15,7 +15,7 @@ after_success:
   - docker build -t bala0408/multi-server ./server
   - docker build -t bala0408/multi-worker ./worker
   #Login to Docker
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
   # Push the imagaes to Docker
   - docker push bala0408/multi-client
   - docker push bala0408/multi-nginx 
