@@ -1,0 +1,20 @@
+sudo required
+services:
+  - docker
+
+before_install:
+  - docker build -t bala/react-test -f ./client/Dockerfile.dev ./client
+  
+script:
+  - docker run bala/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t bala/multi-client ./client
+  - docker build -t bala/multi-nginx ./nginx
+  - docker build -t bala/multi-server ./server
+  - docker build -t bala/multi-worker ./worker
+
+
+
+
+
